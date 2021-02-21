@@ -1,0 +1,28 @@
+long prison(int n, int m, vector<int> h, vector<int> v) {
+    vector <bool> x(n+1, 1);
+    vector <bool> y(m+1, 1);
+    long cx=0,xc= INT_MIN, cy=0, yc= INT_MIN;
+    for (int i=0;i<h.size();i++)
+        x[h[i]]= 0;
+    for (int i=0;i<v.size();i++)
+        y[v[i]]= 0;
+ 
+    for (int i=1;i<=n;i++) {
+        if (x[i])
+            cx= 0;
+        else {
+            cx++;
+            xc= max(xc, cx);
+        }
+    }
+    for (int i=1;i<=m;i++) {
+        if (y[i])
+            cy= 0;
+        else {
+            cy++;
+            yc= max(yc, cy);
+        }
+    }
+    return (xc+1)*(yc+1);
+
+}
