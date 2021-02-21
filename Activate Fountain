@@ -1,0 +1,22 @@
+public static int fountainActivation(List<Integer> a) {
+        int n = a.size();
+        int dp[] = new int[n];
+        Arrays.fill(dp,-1);
+        int idxLeft,idxRight;
+        for(int i = 0 ; i < n ; i++){
+            idxLeft = Math.max(i-a.get(i),0);
+            idxRight = Math.min(i+(a.get(i)+1),n);
+            dp[idxLeft] = Math.max(dp[idxLeft],idxRight);
+        }
+        int countFound = 1;
+        int idxNext = 0;
+        idxRight = dp[0];
+        for(int i=0; i< n; i++){
+            idxNext = Math.max(idxNext,dp[i]);
+            if(i == idxRight){
+                countFound++;
+                idxRight = idxNext;
+            }
+        }
+        return countFound;
+    }
