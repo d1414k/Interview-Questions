@@ -5,14 +5,14 @@ public class Main{
 	public static void main(String[] args) {
 		System.out.println(CountSetTillN(15,3));
 		System.out.println(CountSetTillN(0,20));
-		System.out.println(countInteger(15,16,4)); // 1
-		System.out.println(countInteger(1,16,0)); // 8
+		System.out.println(countInteger(15,16,4));
+		System.out.println(countInteger(1,16,0));
 	}
 	public static int CountSetTillN(long n,int x){
 	    long temp = n+1; 
 	    long cycles = (temp>>(x+1)); 
-	    long remaing = temp - cycles*(1<<(x+1)) - (1<<x);
-	    return (int)(cycles*(1<<x) + (remaing < 0 ? 0 : remaing));
+	    long remaining = temp - cycles*(1<<(x+1)) - (1<<x);
+	    return (int)(cycles*(1<<x) + (remaining < 0 ? 0 : remaining));
 	}
 	public static int countInteger(int L,int R,int x) {
 		return (int) (CountSetTillN(R,x) - CountSetTillN(L-1,x));
