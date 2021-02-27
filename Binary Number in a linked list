@@ -1,0 +1,8 @@
+public static long getNumber(SinglyLinkedListNode binary) {
+        long r = 0;
+        while(binary != null){
+            r = (r <<1) + binary.data;
+            binary = binary.next;
+        }
+        return r;
+ }
