@@ -1,0 +1,23 @@
+bool ch(int c[],int k){
+    int i;
+    for(i=0;i<10;i++)
+    if(c[i] && c[i]!=k)
+    return false;
+    
+    return true;
+}
+int perfectSubstring(string s, int k) {
+int ans=0,i,j;
+for(i=0;s[i];i++){
+    int c[10]={0};
+    for(j=i;s[j];j++){
+        int index=s[j]-'0';
+        c[index]++;
+        if(c[index]>k)
+        break;
+        else if(c[index]==k && ch(c,k))
+        ans++;
+    }
+}
+return ans;
+}
