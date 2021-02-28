@@ -1,0 +1,20 @@
+void dfs(vector<bool> &vist,int u,vector<string>& M){
+        vist[u]=true;
+        for(int i=0;i<M[u].size();i++){
+            if(vist[i]==false && M[u][i]=='1')
+                dfs(vist,i,M);
+        }
+    }
+int countGroups(vector<string> M) {
+int ans=1,n;
+        n=M.size();
+        vector<bool> vist(n,false);
+        dfs(vist,0,M);
+        for(int i=0;i<n;i++){
+            if(vist[i]==false){
+                dfs(vist,i,M);
+                ans++;
+            }
+        }
+        return ans;
+}
