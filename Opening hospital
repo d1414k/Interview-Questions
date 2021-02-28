@@ -1,0 +1,74 @@
+public static int hospital(int cityNodes, List<Integer> cityFrom, List<Integer> cityTo) {
+        int m = cityFrom.size();
+        int [][]edges = new int[m][2];
+        for(int i = 0 ; i < m ; i++){
+            edges[i][0] = cityFrom.get(i)-1;
+            edges[i][1] = cityTo.get(i)-1;
+        }
+        return getOptimalAnswer(cityNodes,edges);
+
+    }
+    static int dfs(int parent, int u, int x, int dp[][], List<Integer>[] adj) {
+        int ans = 0;
+        if(dp[u][x] != -1) return dp[u][x];
+        boolean isLeaf = true;
+        if(adj[u] != null) {
+            int solutions[][] = new int[adj[u].size()][3];
+            int one = 0,zero = 0 ,k=0;
+            for(int i = 0 ; i < adj[u].size() ; i++) {
+                int v = adj[u].get(i);
+                if(v != parent) {
+                    isLeaf = false;
+                    solutions[k][0] = dfs(u,v,0,dp,adj);
+                    solutions[k][1] = dfs(u,v,1,dp,adj);
+                    solutions[k][2] = dfs(u,v,2,dp,adj);
+                    one += solutions[k][1];
+                    zero += solutions[k][0];
+                    k++;
+                }
+            }
+            if(x == 1) {
+                ans = Math.min( 1 + one, zero);
+            }else if(x == 0){
+//                x == 0
+                int temp = Integer.MAX_VALUE;
+                for(int i = 0 ; i < k ; i++) {
+                    temp = Math.min(temp,zero - solutions[i][0] + solutions[i][2]);
+                }
+                ans = Math.min(temp, 1 + one);
+            }else {
+                ans = 1 + one;
+            }
+        }
+        if(isLeaf) {
+            if(x != 1)
+                ans = 1;
+            else ans = 0;
+        }
+        return dp[u][x] = ans;
+    }
+    static int getOptimalAnswer(int N, int edges[][]) {
+        int ans;
+        List<Integer>[] adj = new List[N + 1];
+        int dp[][] = new int[N + 1][3];
+        for(int i = 0 ; i <= N ; i++) {
+            dp[i][0] = dp[i][1] = dp[i][2] = -1;
+        }
+
+        for(int i = 0 ; i < edges.length ; i++) {
+            int u = edges[i][0], v = edges[i][1];
+            if (adj[u] == null) {
+                adj[u] = new ArrayList();
+            }
+            if (adj[v] == null) {
+                adj[v] = new ArrayList();
+            }
+            adj[u].add(v);
+            adj[v].add(u);
+        }
+        ans = dfs(-1,1,0,dp,adj);
+
+        return ans;
+    }
+
+}
