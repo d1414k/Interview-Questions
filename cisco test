@@ -1,0 +1,412 @@
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class SinglyLinkedListNode {
+    public int data;
+    public SinglyLinkedListNode next;
+
+    public SinglyLinkedListNode(int nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList {
+    public SinglyLinkedListNode head;
+    public SinglyLinkedListNode tail;
+
+    public SinglyLinkedList() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    public void insertNode(int nodeData) {
+        SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+        if (this.head == null) {
+            this.head = node;
+        } else {
+            this.tail.next = node;
+        }
+
+        this.tail = node;
+    }
+}
+
+class SinglyLinkedListPrintHelper {
+    public static void printList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
+        while (node != null) {
+            bufferedWriter.write(String.valueOf(node.data));
+
+            node = node.next;
+
+            if (node != null) {
+                bufferedWriter.write(sep);
+            }
+        }
+    }
+}
+
+
+class Result {
+
+    /*
+     * Complete the 'getNumber' function below.
+     *
+     * The function is expected to return a LONG_INTEGER.
+     * The function accepts INTEGER_SINGLY_LINKED_LIST binary as parameter.
+     */
+
+    /*
+     * For your reference:
+     *
+     * SinglyLinkedListNode {
+     *     int data;
+     *     SinglyLinkedListNode next;
+     * }
+     *
+     */
+
+    public static long getNumber(SinglyLinkedListNode b) {
+        long result = 0;
+        while(b != null){
+            result = (result << 1) + b.data;
+            b = b.next;
+        }
+        return result;
+    }
+
+}
+public class Solution {
+
+
+
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+class Result {
+
+    /*
+     * Complete the 'classify' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts INTEGER number as parameter.
+     */
+
+    public static String classify(int num) {
+        if(num == 1)
+        return "Deficient";
+        int sum = -1*num;
+        for(int i = 1 ; i <= Math.sqrt(num) ; i++){
+            if(num %i == 0){
+                sum+=i;
+                sum+= num/i;
+            }    
+            if(sum > num){
+                return "Abundant";
+            }
+        }
+        if(sum != num)
+        return "Deficient";
+        else
+        return "Perfect";
+    }
+
+}
+public class Solution {
+
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+import java.util.*;
+import java.util.Calendar;
+class Result {
+
+    /*
+     * Complete the 'numSundaysOnFirst' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER year as parameter.
+     */
+
+    public static int numSundaysOnFirst(int y) {
+        Calendar cal = Calendar.getInstance();
+        int ans = 0;
+        for(int m = 1 ; m <=12 ; m++){
+            cal.set(y,m,1);
+            if(cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+}
+
+public class Solution {
+
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+
+
+    // Complete the maxTickets function below.
+    static int maxTickets(List<Integer> t) {
+        Collections.sort(t);
+        int n = t.size();
+        HashMap<Integer,Integer> hm = new HashMap();
+        int maxLen = 0;
+        for(int i = 0 ; i < n ; i++){
+            int len = 0;
+            Integer l = hm.get(t.get(i)-1);
+            if( l != null && len < l)
+                len = l;
+            Integer l1 = hm.get(t.get(i));
+            if( l1 != null && len < l1)
+                len = l1;
+            Integer l2 = hm.get(t.get(i)+1);
+            if(l2 != null && len < l2)
+                len = l2;
+            
+            hm.put(t.get(i),len+1);
+            if(maxLen < hm.get(t.get(i)))
+                maxLen = hm.get(t.get(i));
+        }
+        return maxLen;
+    }
+    public static void main(String[] args) throws IOException {
+    
+    
+    
+    
+    import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+class Result {
+    public static int countCircularPrimes(long n) {
+        long result = 0;
+
+        for(int i=2;i<n;i++)
+        {
+            if(isPrime(i))
+            {
+                if(isCircular(i))
+                    result++;
+            }
+        }
+        return (int)result;
+    }
+    
+    public static boolean isCircular(int n)
+    {
+        String s = String.valueOf(n);
+        char[] arr = s.toCharArray();
+        int rotation = 0;
+        while(rotation<s.length())
+        {
+            arr = getNextR(arr);
+            if(!isPrime(Long.valueOf(new String(arr)))) return false;
+            rotation+=1;
+        }
+        return true;
+    }
+    public static char[] getNextR(char[] arr)
+    {
+        if(arr.length>1)
+        {
+            char temp = arr[0];
+            for(int i=0;i<arr.length-1;i++)
+            {
+                arr[i] = arr[i+1];
+            }
+            arr[arr.length-1] = temp;
+        }
+        return arr;
+    }
+
+    public static boolean isPrime(long num)
+    {
+        try
+        {
+            if ( num > 2 && num%2 == 0 ) return false;
+            int top = (int)Math.sqrt(num) + 1;
+            for(int i = 3; i < top; i+=2)
+            {
+                if(num % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+    }
+
+    /*
+     * Complete the 'countCircularPrimes' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER number as parameter.
+     */
+    // static int size = 10000;
+    // static boolean prime[] = new boolean[size +1];
+    // static {
+    //     Arrays.fill(prime,true);
+    //     for(int i = 2 ; i*i <= size; i++){
+    //         if(!prime[i]) continue;
+    //         for(int j = i*i ; j <= size ; j+=i)
+    //             prime[j] = false;    
+    //     }
+    // }
+    // public static int countCircularPrimes(int num) {
+    //     int sum = 0;
+    //     for(int i = 1 ; i < num ; i++){
+    //         if(i > 5 && (i%2 == 0 || i%3 == 0 || i%5 == 0)){;}
+    //         else{
+    //             int temp = i;
+    //             int n = 0;
+    //             while(temp > 0){
+    //                 n++;
+    //                 temp/=10;
+    //             }
+    //             int c = 0;
+    //             int x = 0;
+    //             temp = i;
+    //             while(x < n){
+    //                 if(isPrime(temp)){
+    //                     c++;
+    //                 }
+    //                 int d = temp%10;
+    //                 temp = temp/10;
+    //                 for(int j = 1 ; j <n ; j++){
+    //                     d = d*10;
+    //                 }
+    //                 temp = d + temp;
+    //                 x++;
+    //                 if(c == n){
+    //                     sum++;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return sum;
+    // }
+    // public static int countCircularPrimes(int num) {
+    //     int res = 0;
+    //     int t = (num)/2;
+    //     // Arrays.fill(visited,false);
+    //     // sieve(visited,t);
+    //     // if(num > 2) res++;
+        
+    //     for(int i = 2 ; i <= t ; i++){
+    //         if(!prime[i]) continue;
+    //         int n = rotate(i);
+    //         // while(n!= (2*i+1)){
+    //         //     if(n%2 == 0) break;
+    //         //     if(visited[(n-1)/2] == false)
+    //         //         n = rotate(n);
+    //         //     else
+    //         //         break;
+    //         // }
+    //         // if(n == (2*i+1))
+    //         if(prime[n])
+    //             res++;
+    //     }
+    //     return res;
+    // }
+    
+    // static int rotate(int n){ p("num: "+n);
+    //     // int rem = n*10;
+    //     // rem *= Math.pow(10,countD(n)); 
+    //     // n/=10;
+    //     // n += rem;
+    //     // return n;
+    //     int num = 0;
+    //     while(n > 0){
+    //         num += 10*num + n%10;
+    //         n/=10;
+    //     } p("res : "+num);
+    //     return num;
+    // }
+    // static int countD(int n){
+    //     int d = 0;
+    //     while((n/10) > 0 )
+    //         d++;
+    //     return d;
+    // }
+    // static void p(String s){
+    //     System.out.println(s);
+    // }
+    static boolean isPrime(int n){
+        if(n<=1) return false;
+        if(n <=3) return true;
+        if(n%2 == 0 || n%3 == 0) return false;
+        for(int i = 5 ; i *i <= n ; i+=6){
+            if(n%i == 0 && n%(i+2) == 0) return false;
+        }
+        return true;
+    }
+
+}
+
+public class Solution {
