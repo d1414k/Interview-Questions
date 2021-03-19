@@ -5,5 +5,18 @@ Spinny
 3. Atomic transaction
 4. Android Gradle build
 5. Gradle file in android
-6. 
+6. Design Score board
 
+Fleetx
+
+1. Disadvantage of Inheritance
+2. Implement -,+,*,/ using only + operator
+
+Paytm 
+
+1. Gradle, Dependency, Transitive dependency and its working in Android
+2. Difference between service and Intent service
+3. How android system identifies different application, and what happens when we install an application
+with same "package name" already installed.
+4. Have you worked on kotline.
+5. How TCP works, connection and disconnection part
