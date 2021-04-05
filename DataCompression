@@ -1,0 +1,66 @@
+import java.util.*;
+
+class Node{
+	char val;
+	Node left;
+	Node right;
+}
+public class Main{
+	public static void main(String []ss) {
+		Node root = constructTree("*a**!*dc*rb");
+		//printPreorder(root);
+		System.out.println(decodeMessage(root,"0111110010110101001111100100"));
+		stats("0111110010110101001111100100", decodeMessage(root,"0111110010110101001111100100"));
+		
+	}
+	public static int index = 0;
+	public static Node constructTree(String pre) {
+		if(pre == null || pre.length() == 0) return null;
+		index = 0;
+		return constructTreeUtil(pre);
+	}
+	public static Node constructTreeUtil(String pre) {
+		if(index >= pre.length()) return null;
+		Node root = new Node();
+		root.val = pre.charAt(index);
+		index++;
+		// if internal node
+		if(root.val == '*') {
+			root.left = constructTreeUtil(pre);
+			root.right = constructTreeUtil(pre);
+		}
+		return root;
+	}
+	public static String decodeMessage(Node root, String s){
+		StringBuilder sb =  new StringBuilder();
+		index = 0;
+		while(index < s.length()) 
+			sb.append(decodeMessageUtil(root,s));
+		return sb.toString();
+    }
+	public static char decodeMessageUtil(Node root,String s) {
+		if (root.left == null && root.right == null) {
+            return root.val;
+        }
+		if(s.charAt(index++) == '0')
+			return decodeMessageUtil(root.left,s);
+		
+		return decodeMessageUtil(root.right,s);
+	}
+	
+	public static void stats(String encoded,String decoded) {
+		int n = encoded.length();
+		int m = decoded.length();
+		System.out.println("Number of bits = "+n);
+		System.out.println("Number of characters = "+m);
+		double r = 100*(n*1.0)/(8*m*1.0);
+		System.out.printf("Compression ratio =  %.2f",r);
+		System.out.println("%");
+	}
+	public static void printPreorder(Node root) {
+		if(root == null) return;
+		System.out.print(root.val+" ");
+		printPreorder(root.left);
+		printPreorder(root.right);
+	}
+}
