@@ -20,3 +20,43 @@ Paytm
 with same "package name" already installed.
 4. Have you worked on kotline.
 5. How TCP works, connection and disconnection part
+
+
+Amazon
+
+Round1.
+
+1. Variation of max water collected on building of different heights
+2. Max path sum in binary tree
+3. Some question based on work experience
+
+Time : 1.30 hr
+
+Round2
+
+1. Search in sorted rotated array
+2. Width of binary tree
+3. no of island
+4. Some question based on work experience
+Time : 1 hr
+
+Round 3: Hiring Manager
+
+1. Difference between == and equals
+2. Method overloading and overriding
+3. Paging and why to use it.
+4. Process vs thread
+5. Abstraction and encapsulation
+6. Situation where you worked on tight deadline.
+7. Process scheduling and which one used in practical
+8. Do we need paging if we have single process to run
+9. Write single class and show me abstraction.
+( Design simple car racing game)
+10. Can we use thread instead of thread.
+11. Difference between user and kernel thread
+12. What is normalization and denormalization
+13.out of memory error
+14. Is there any situation in which actually two threads running in parallel
+
+And some other follow up questions also.
+Time : 1.40 min
