@@ -85,7 +85,20 @@ HM Round :
 3. Situation based Questions
  Ex. Conflict with peers, areas of improvements etc.
  
+ Swiggy:
+ Round 1 : Online test
+ Round 2 : DSA
+ Q1 : 
+ Q2: Implement rand(18) using rand(6)
+ Q3:
+ Q1:
+ Q2: subarray with maxinum product. 
+ Round 3 : DSA
+ Q1. Kind of coin change problem
+ Q2 : Desing restorent menu
+ Q3 : Design playing card
  
+ Round 4 : HM 
  Joveo:
  1. Screening round
   LinkedList based question. [find kth position if we have more than 0 values in a node]
@@ -95,4 +108,7 @@ HM Round :
  k closest point to origin
  Followup : K closest point to a point 'p'   : O(K) time
  Hint : use concentric circle property
+ 
+ Google :
+ https://leetcode.com/discuss/interview-question/1296187/Google-India-L3L4-Rejected
   
